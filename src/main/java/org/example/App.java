@@ -18,10 +18,18 @@ public class App
     // 9. Close the browser
     // 10. Quit the browser
     public static void main( String[] args ) throws InterruptedException {
+
+        //Open the Chrome browser
         System.setProperty("webdriver.chrome.driver","C://Users//ACER//Downloads//chromedriver.exe");
         WebDriver driver = new ChromeDriver();
+
+        //Navigate to the emag page
         driver.get("https://www.emag.ro/");
+
+        //Maximize the window
         driver.manage().window().maximize();
+
+        //Get the current Url, print it and verity if is correct
         String pageUrl = driver.getCurrentUrl();
         System.out.println("The current Url of the page is " + pageUrl);
         if (pageUrl.equals("https://www.emag.ro/")) {
@@ -30,6 +38,8 @@ public class App
         else{
             System.out.println("The page Url is incorrect");
         }
+
+        //Get the title of the page, print it and verity if is correct
         String pageTitle = driver.getTitle();
         System.out.println("The title of the page is  " + pageTitle);
         if (pageTitle.equals("eMAG.ro - Căutarea nu se oprește niciodată")) {
@@ -38,12 +48,19 @@ public class App
         else {
             System.out.println("The title of the page is incorrect");
         }
+
+        //Get the length of the title
         int titleLength = driver.getTitle().length();
         System.out.println("The length of the title is " + titleLength);
+
+        //Get the page source
         //String pageSource = driver.getPageSource();
         //System.out.println("The page source is " + pageSource);
+
+        //Locate and click on eMAG Help tab
         driver.findElement(By.xpath("//a[@title='eMAG Help']")).click();
         Thread.sleep(2000);
+
         //driver.close();
         driver.quit();
     }
